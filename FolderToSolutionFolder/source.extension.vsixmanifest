@@ -4,17 +4,17 @@
     <Identity Id="478d788e-8e9d-402a-ac64-e679658a0045" Version="1.0" Language="en-US" Publisher="Cecilia Wirén" />
     <DisplayName>Folder To Solution Folder</DisplayName>
     <Description xml:space="preserve">Create a Solution Folder from a selected folder also including the files in that selected folder. Will not move the files. Access through the context menu for the solution in the solution explorer right below Add-&gt;New Solution Folder.</Description>
-    <License>lincense.txt</License>
+    <License>LICENSE.txt</License>
     <Icon>Resources\FolderCommandPackage.ico</Icon>
     <PreviewImage>sceenshoot.png</PreviewImage>
     <Tags>folder; solution folder; cecilia; ceciliasharp</Tags>
   </Metadata>
   <Installation>
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0, 16.0)" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0, 16.0)" />
   </Installation>
   <Dependencies>
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
-    <Dependency Id="Microsoft.VisualStudio.MPF.15.0" DisplayName="Visual Studio MPF 15.0" d:Source="Installed" Version="[15.0,16.0)" />
+    <Dependency Id="Microsoft.VisualStudio.MPF.14.0" DisplayName="Visual Studio MPF 14.0" d:Source="Installed" Version="[14.0,16.0)" />
   </Dependencies>
   <Prerequisites>
     <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,16.0)" DisplayName="Visual Studio core editor" />
