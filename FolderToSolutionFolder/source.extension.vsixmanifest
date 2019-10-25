@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="478d788e-8e9d-402a-ac64-e679658a0045" Version="1.2" Language="en-US" Publisher="Cecilia Wirén" />
+        <Identity Id="478d788e-8e9d-402a-ac64-e679658a0045" Version="1.2.2" Language="en-US" Publisher="Cecilia Wirén" />
         <DisplayName>Folder To Solution Folder</DisplayName>
         <Description xml:space="preserve">Create a Solution Folder from a selected folder also including the files in that selected folder. Will not move the files. Access through the context menu for the solution in the solution explorer right below Add-&gt;New Solution Folder.</Description>
         <License>LICENSE.txt</License>
