@@ -41,15 +41,9 @@ namespace CeciliaSharp.FolderToSolutionFolder
         /// <param name="package">Owner package, not null.</param>
         private FolderCommand(Package package)
         {
-            if (package == null)
-            {
-                throw new ArgumentNullException("package");
-            }
+            this.package = package ?? throw new ArgumentNullException("package");
 
-            this.package = package;
-
-            OleMenuCommandService commandService = this.ServiceProvider.GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
-            if (commandService != null)
+            if (this.ServiceProvider.GetService(typeof(IMenuCommandService)) is OleMenuCommandService commandService)
             {
                 var menuCommandID = new CommandID(CommandSet, CommandId);
                 var menuItem = new MenuCommand(this.MenuItemCallback, menuCommandID);
@@ -155,16 +149,17 @@ namespace CeciliaSharp.FolderToSolutionFolder
         {
             Solution2 sol2 = (Solution2)dte.Solution;
             var solutionPath = Path.GetDirectoryName(sol2.FullName);
-            var dialog = new FolderBrowserDialog()
+            using (var dialog = new FolderBrowserDialog())
             {
-                ShowNewFolderButton = false,
-                Description = "Select a folder. The folder you pick will be created as a solution folder and containing files will be added to it.",
-                SelectedPath = solutionPath
-            };
-            var r = dialog.ShowDialog();
+                dialog.ShowNewFolderButton = false;
+                dialog.Description = "Select a folder. The folder you pick will be created as a solution folder and containing files will be added to it.";
+                dialog.SelectedPath = solutionPath;
 
-            if (r == DialogResult.OK)
-                return new DirectoryInfo(dialog.SelectedPath);
+                var r = dialog.ShowDialog();
+
+                if (r == DialogResult.OK)
+                    return new DirectoryInfo(dialog.SelectedPath);
+            }
 
             return null;
         }
