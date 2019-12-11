@@ -138,6 +138,10 @@ namespace CeciliaSharp.FolderToSolutionFolder
                 }
                 else if (item is DirectoryInfo)
                 {
+                    // Skip git repo folder since it's too big and not necessary.
+                    if (item.Name == ".git")
+                        continue;
+
                     var solutionFolder = (SolutionFolder)project.Object;
                     var newSolutionFolder = solutionFolder.AddSolutionFolder(item.Name);
                     IncludeFiles((DirectoryInfo)item, newSolutionFolder);
