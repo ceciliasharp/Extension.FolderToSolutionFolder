@@ -104,9 +104,8 @@ namespace CeciliaSharp.FolderToSolutionFolder
         private void MenuItemCallback(object sender, EventArgs e)
         {
             string message = string.Format(CultureInfo.CurrentCulture, "Inside {0}.MenuItemCallback()", this.GetType().FullName);
-            string title = "ItemContextCommand";
 
-            // figure out if a project or project item was clicked
+            // figure out if a project or project-folder was clicked
             ProjectItems items = null;
             try
             {
@@ -153,9 +152,12 @@ namespace CeciliaSharp.FolderToSolutionFolder
                     return;
 
                 bool isSolutionFolder = false;
-                if(items != null)
+                const string folderKindVirtual  = @"{6BB5F8F0-4483-11D3-8BCF-00C04F8EC28C}";
+                
+                string folderKind = folderKindVirtual;
+                if (items != null)
                 {
-                    items = items.AddFolder(folder.Name, @"{6BB5F8F0-4483-11D3-8BCF-00C04F8EC28C}").ProjectItems;
+                    items = items.AddFolder(folder.Name, folderKind).ProjectItems;
                 }
                 else
                 {
@@ -166,7 +168,7 @@ namespace CeciliaSharp.FolderToSolutionFolder
 
                 dte.StatusBar.Text = $"Creating Folders for {folder.Name}";
 
-                IncludeFiles(folder, items, isSolutionFolder);
+                IncludeFiles(folder, items, isSolutionFolder, folderKind);
 
                 dte.StatusBar.Text = $"Created Folders for {folder.Name}";
             }
@@ -176,7 +178,7 @@ namespace CeciliaSharp.FolderToSolutionFolder
             }
         }
 
-        private static void IncludeFiles(DirectoryInfo folder, ProjectItems items, bool isSolutionFolder)
+        private static void IncludeFiles(DirectoryInfo folder, ProjectItems items, bool isSolutionFolder, string folderKind)
         {
             foreach (var item in folder.GetFileSystemInfos())
             {
@@ -197,12 +199,12 @@ namespace CeciliaSharp.FolderToSolutionFolder
                     {
                         var solutionFolder = (SolutionFolder)((Project)items.Parent).Object;
                         var newSolutionFolder = solutionFolder.AddSolutionFolder(item.Name).ProjectItems;
-                        IncludeFiles(info, newSolutionFolder, isSolutionFolder);
+                        IncludeFiles(info, newSolutionFolder, isSolutionFolder, folderKind);
                     }
                     else
                     {
-                        var newItems = items.AddFolder(folder.Name, @"{6BB5F8F0-4483-11D3-8BCF-00C04F8EC28C}").ProjectItems;
-                        IncludeFiles(info, newItems, isSolutionFolder);
+                        var newItems = items.AddFolder(folder.Name, folderKind).ProjectItems;
+                        IncludeFiles(info, newItems, isSolutionFolder, folderKind);
                     }
                 }
             }
