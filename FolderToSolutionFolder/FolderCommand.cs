@@ -203,7 +203,7 @@ namespace CeciliaSharp.FolderToSolutionFolder
                     }
                     else
                     {
-                        var newItems = items.AddFolder(folder.Name, folderKind).ProjectItems;
+                        var newItems = items.AddFolder(item.Name, folderKind).ProjectItems;
                         IncludeFiles(info, newItems, isSolutionFolder, folderKind);
                     }
                 }
