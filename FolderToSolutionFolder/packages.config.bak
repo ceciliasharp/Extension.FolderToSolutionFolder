@@ -23,7 +23,10 @@
   <package id="Microsoft.VisualStudio.Threading" version="14.1.131" targetFramework="net46" />
   <package id="Microsoft.VisualStudio.Utilities" version="14.3.25407" targetFramework="net46" />
   <package id="Microsoft.VisualStudio.Validation" version="14.1.111" targetFramework="net46" />
+  <package id="Microsoft.VisualStudio.VCProjectEngine" version="16.9.31025.104" targetFramework="net46" />
   <package id="Microsoft.VSSDK.BuildTools" version="15.0.25907-RC2" targetFramework="net46" developmentDependency="true" />
   <package id="Microsoft.WindowsAPICodePack.Core" version="1.1.0" targetFramework="net46" />
   <package id="Microsoft.WindowsAPICodePack.Shell" version="1.1.0" targetFramework="net46" />
+  <package id="WindowsAPICodePack-Core" version="1.1.1" targetFramework="net46" />
+  <package id="WindowsAPICodePack-Shell" version="1.1.1" targetFramework="net46" />
 </packages>

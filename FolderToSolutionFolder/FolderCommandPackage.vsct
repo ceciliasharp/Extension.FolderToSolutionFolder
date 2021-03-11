@@ -54,6 +54,13 @@
           <ButtonText>Add Folder as Solution Folder...</ButtonText>
         </Strings>
       </Button>
+      <Button guid="guidFolderCommandPackageCmdSet2" id="FolderCommandId" priority="0x0400" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_ADD_ITEMS"/>
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Add Folder as Project Folder...</ButtonText>
+        </Strings>
+      </Button>
     </Buttons>
 
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
@@ -73,6 +80,11 @@
 
     <!-- This is the guid used to group the menu commands together -->
     <GuidSymbol name="guidFolderCommandPackageCmdSet" value="{7fd09a49-455e-442f-921e-c2c4d5e12997}">
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="FolderCommandId" value="0x0100" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidFolderCommandPackageCmdSet2" value="{7fd09a49-455e-442f-921e-c2c4d5e12998}">
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="FolderCommandId" value="0x0100" />
     </GuidSymbol>
